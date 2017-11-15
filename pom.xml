@@ -4,7 +4,7 @@
     <groupId>com.mycompany</groupId>
     <artifactId>MavenEjemplo</artifactId>
     <version>1.0-SNAPSHOT</version>
-   <name>MavenEjemplo</name>
+   <name>FPD_APP4</name>
      <properties>
         <server.deploy.dir>UTF-8</server.deploy.dir>
     </properties>
