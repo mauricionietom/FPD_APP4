@@ -19,6 +19,10 @@ public class Conexion {
  //Gestiona la conexion con la base de Datos
  private Connection connection=null;
  
+// jdbc:postgresql://Host/Database?user=User&password=Password&ssl=
+//true&sslfactory=org.postgresql.ssl.NonValidatingFactory";
+//DriverManager.getConnection(dbUrl);
+ 
  private Conexion() throws SQLException{
      
      try{
@@ -31,8 +35,8 @@ public class Conexion {
      }
      try{
          //2.Obtener la conexion                                               //nombre base de datos
-        this.connection= DriverManager.getConnection("jdbc:mysql://localhost:3306/FPD","root","root");
-         
+        this.connection= DriverManager.getConnection("jdbc:postgresql://ec2-54-235-150-134.compute-1.amazonaws.com/dato0e1iak3v28?user=uoqgtpjxabkogv&password=c203fb69091c05c598825d38e38444be5cfa7748a00fa522a55c7b290c668b3e&ssl=\n" +
+"true&sslfactory=org.postgresql.ssl.NonValidatingFactory");         
      }catch(SQLException e){
          
          
