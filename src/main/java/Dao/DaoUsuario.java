@@ -59,19 +59,19 @@ public class DaoUsuario {
     
         try{
         //!.Establecer la consulta
-        String consulta="INSERT INTO USUARIO VALUES(?,?,?,?,?,?)";
+        String consulta="INSERT INTO USUARIO(email,pswd,nombre,apellido,colegio) VALUES(?,?,?,?,?)";
         //2.Crear el prepareStament
           PreparedStatement statement;
           statement=this.conexion.prepareStatement(consulta);
         
         //-------------------------------------------------
         
-        statement.setInt(1, esq.getIdUser());
-        statement.setString(2, esq.getEmail());
-        statement.setString(3, esq.getPswd());
-        statement.setString(4, esq.getNombreUser());
-        statement.setString(5, esq.getApellido());
-        statement.setString(6, esq.getColegio());              
+       
+        statement.setString(1, esq.getEmail());
+        statement.setString(2, esq.getPswd());
+        statement.setString(3, esq.getNombreUser());
+        statement.setString(4, esq.getApellido());
+        statement.setString(5, esq.getColegio());              
      
           //-----------------------------------------------
 

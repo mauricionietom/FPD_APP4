@@ -1,4 +1,3 @@
-
 package Servlets;
 
 import Dao.Dao;
@@ -17,32 +16,30 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
-
 public class ServletExp extends HttpServlet {
-
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        
     }
-
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
-         ArrayList<Experiencia> lista = null;
+        
+        ArrayList<Experiencia> lista = null;
         Dao de;
-
+        
         try {
             de = new Dao();
             lista = de.getExperiencia();
-
+            
             request.setAttribute("experiencias", lista);
-
+            
             RequestDispatcher rd = request.getRequestDispatcher("TablaExp.jsp");
             rd.forward(request, response);
             
-    }   catch (SQLException ex) {
+        } catch (SQLException ex) {
             Logger.getLogger(ServletExp.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ServletExp.class.getName()).log(Level.SEVERE, null, ex);
@@ -52,24 +49,25 @@ public class ServletExp extends HttpServlet {
             Logger.getLogger(ServletExp.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        
         String nombreExp = request.getParameter("nombreExp");
         String curso = request.getParameter("curso");
         String asignatura = request.getParameter("asig");
         String tema = request.getParameter("tema");
         String descripcion = request.getParameter("d");
+        String apoyo = request.getParameter("apoyo");
 
         //HttpSession session = request.getSession();
         //String usuario = session.getAttribute("idUser").toString();
-        String usuario="1";
+        String usuario = "1";
         Dao dExp;
-      
+        
         try {
-            DaoUsuario du= new DaoUsuario();
+            DaoUsuario du = new DaoUsuario();
             dExp = new Dao();
             Experiencia exp = new Experiencia();
             exp.setIdExp(dExp.idgenerado());
@@ -78,14 +76,15 @@ public class ServletExp extends HttpServlet {
             exp.setAsignatura(asignatura);
             exp.setTema(tema);
             exp.setDescripcion(descripcion);
+            exp.setApoyo(apoyo);
             exp.setIdUser(du.objetoUsario(Integer.parseInt(usuario)));
             boolean rta = dExp.insertar(exp);
-            System.out.println("rat----------"+rta);
-            if (rta==false) {
+            System.out.println("rat----------" + rta);
+            if (rta == false) {
                 RequestDispatcher rd = request.getRequestDispatcher("column.jsp");
                 rd.forward(request, response);
             } else {
-                 RequestDispatcher rd = request.getRequestDispatcher("TablaExp.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("TablaExp.jsp");
                 rd.forward(request, response);
             }
         } catch (SQLException ex) {
@@ -99,8 +98,7 @@ public class ServletExp extends HttpServlet {
         }
         
     }
-
-
+    
     @Override
     public String getServletInfo() {
         return "Short description";

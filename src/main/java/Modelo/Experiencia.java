@@ -17,6 +17,17 @@ public class Experiencia {
     private String Asignatura;
     private String Tema;
     private String Descripcion;
+    private String Apoyo;
+
+    public String getApoyo() {
+        return Apoyo;
+    }
+
+    public void setApoyo(String Apoyo) {
+        this.Apoyo = Apoyo;
+    }
+    
+    
     
     Usuario idUser = new Usuario();
 

@@ -257,6 +257,17 @@
 
                                                 </select>
                                             </div>
+                                            
+                                            <div name="apoyo" class="form-group has-error">
+                                                <label>Seleccione algun material de apoyo que desea agregar a la experiencia</label>
+                                                <select name="apoyo" multiple class="form-control">
+                                                    <option value="Imagen">Imagen</option>
+                                                    <option value="Video">Video</option>
+                                                    <option value="Audio">Audio</option>
+                                                    
+                                                     </select>
+                                            </div>
+                                                    
                                             <div class="form-group">
                                                 <label>Imagen de apoyo a la experiencia</label>
                                                 <input type="file">
