@@ -49,7 +49,8 @@ public class ServletLogin extends HttpServlet {
             
         if(rta==1){
             
-        response.sendRedirect("/Experience.jsp");
+     RequestDispatcher rd = request.getRequestDispatcher("Experience.jsp");
+            rd.forward(request, response); 
         }if(rta==2){
         RequestDispatcher rd = request.getRequestDispatcher("error.jsp");
             rd.forward(request, response); 
