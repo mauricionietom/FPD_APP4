@@ -122,4 +122,29 @@ public class DaoUsuario {
         return esq;
     }
      
+      public Usuario objetoUsuarioEmail (String email) throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException {
+        
+        String query;
+        Usuario esq=null;
+        Class.forName("com.mysql.jdbc.Driver").newInstance();
+        Statement stmt = (Statement) conexion.createStatement();
+        query = "SELECT * FROM Usuario WHERE email='" + email+ "';";
+        stmt.executeQuery(query);
+        ResultSet rs = stmt.getResultSet();
+        
+        System.out.println(query);
+        
+        while (rs.next()) {
+            
+            esq= new Usuario();
+            esq.setIdUser(rs.getInt("IdUser"));
+            esq.setEmail(rs.getString("Email"));
+            esq.setPswd(rs.getString("Pswd"));
+            esq.setNombreUser(rs.getString("Nombre"));
+            esq.setApellido(rs.getString("Apellido"));
+            esq.setColegio(rs.getString("Colegio"));
+            
+           }
+        return esq;
+    }
 }

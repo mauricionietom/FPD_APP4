@@ -18,6 +18,19 @@ public class Experiencia {
     private String Tema;
     private String Descripcion;
     private String Apoyo;
+    private String Estado;
+
+    public String getEstado() {
+        return Estado;
+    }
+
+    public void setEstado(String Estado) {
+        this.Estado = Estado;
+    }
+
+   
+    
+    
 
     public String getApoyo() {
         return Apoyo;

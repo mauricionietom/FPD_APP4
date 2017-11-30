@@ -36,21 +36,16 @@ public class DaoComentario {
 
         try {
             //!.Establecer la consulta
-            String consulta = "INSERT INTO COMENTARIO VALUES(?,?,?,?)";
+            String consulta = "INSERT INTO COMENTARIO (descripcion,idExp,idUser) VALUES(?,?,?)";
             //2.Crear el prepareStament
             PreparedStatement statement;
             statement = this.conexion.prepareStatement(consulta);
 
-            DaoUsuario du = new DaoUsuario();
-            DaoExperiencia de = new DaoExperiencia();
-
-            Usuario u = du.objetoUsario(esq.getIdUser().getIdUser());
-            Experiencia e = de.objetoExperiencia(esq.getIdExp().getIdExp());
             //-------------------------------------------------
-            statement.setInt(1, esq.getIdCom());
-            statement.setString(2, esq.getDescripcion());
-            statement.setInt(3, e.getIdExp());
-            statement.setInt(4, u.getIdUser());
+           
+            statement.setString(1, esq.getDescripcion());
+            statement.setInt(2, esq.getIdExp());
+            statement.setInt(3, esq.getIdUser());
 
             //----------------------------------------------- 
             //3.Hacer la ejecucion
@@ -84,9 +79,9 @@ public class DaoComentario {
         esq = new Comentario();
         esq.setIdCom(rs.getInt("idCom"));
         esq.setDescripcion(rs.getString("Descripcion"));
-        esq.setIdUser(du.objetoUsario(rs.getInt("IdUser")));
-        esq.setIdExp(de.objetoExperiencia(rs.getInt("IdExp")));
-
+        esq.setIdUser((rs.getInt("IdUser")));
+        esq.setIdExp(rs.getInt("idExp"));
+        
         return esq;
     }
 
@@ -118,8 +113,8 @@ public class DaoComentario {
                 esq = new Comentario();
                 esq.setIdCom(rs.getInt("idCom"));
                 esq.setDescripcion(rs.getString("Descripcion"));
-                esq.setIdUser(du.objetoUsario(rs.getInt("idUser")));
-                esq.setIdExp(de.objetoExperiencia(rs.getInt("idExp")));
+                esq.setIdUser(rs.getInt("idUser"));
+                esq.setIdExp(rs.getInt("idExp"));
 
                 Coment.add(esq);
             }
@@ -130,14 +125,6 @@ public class DaoComentario {
         return Coment;
     }
 
-    public int idgenerado() {
-
-        int max = 99999;
-        int min = 00000;
-        Random rand = new Random();
-        int randomNum = rand.nextInt((max - min) + 1) + min;
-        System.out.println(randomNum);
-        return ((int) System.currentTimeMillis()) + randomNum;
-    }
+    
 
 }

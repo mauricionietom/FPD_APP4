@@ -1,6 +1,7 @@
 package Servlets;
 
 import Dao.Dao;
+import Dao.DaoExperiencia;
 import Dao.DaoUsuario;
 import Modelo.Experiencia;
 import java.io.IOException;
@@ -47,13 +48,14 @@ public class ServletExp extends HttpServlet {
             Logger.getLogger(ServletExp.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
             Logger.getLogger(ServletExp.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        } 
     }
     
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+       
         String nombreExp = request.getParameter("nombreExp");
         String curso = request.getParameter("curso");
         String asignatura = request.getParameter("asig");
@@ -61,16 +63,17 @@ public class ServletExp extends HttpServlet {
         String descripcion = request.getParameter("d");
         String apoyo = request.getParameter("apoyo");
 
-        //HttpSession session = request.getSession();
-        //String usuario = session.getAttribute("idUser").toString();
-        String usuario = "1";
+        HttpSession session = request.getSession();
+       String usuario = session.getAttribute("idGuardado").toString();
+       
+        System.out.println(usuario + "+++++++++++++++++++++++++++++++++++");
+        
         Dao dExp;
         
         try {
             DaoUsuario du = new DaoUsuario();
             dExp = new Dao();
             Experiencia exp = new Experiencia();
-            exp.setIdExp(dExp.idgenerado());
             exp.setNombreExp(nombreExp);
             exp.setCurso(Integer.parseInt(curso));
             exp.setAsignatura(asignatura);

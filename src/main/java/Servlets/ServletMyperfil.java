@@ -51,15 +51,15 @@ public class ServletMyperfil extends HttpServlet {
             RequestDispatcher rd = request.getRequestDispatcher("TablaMyExp.jsp");
             rd.forward(request, response);
             
-    }   catch (SQLException ex) {
-            Logger.getLogger(ServletExp.class.getName()).log(Level.SEVERE, null, ex);
+    }   catch (SQLException ex) {   
+            Logger.getLogger(ServletMyperfil.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ServletExp.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ServletMyperfil.class.getName()).log(Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            Logger.getLogger(ServletExp.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ServletMyperfil.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            Logger.getLogger(ServletExp.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            Logger.getLogger(ServletMyperfil.class.getName()).log(Level.SEVERE, null, ex);
+        }   
     }
 
 

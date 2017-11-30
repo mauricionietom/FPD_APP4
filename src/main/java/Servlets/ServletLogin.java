@@ -5,8 +5,8 @@
  */
 package Servlets;
 
-
 import Dao.DaoUsuario;
+import Modelo.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -17,10 +17,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.servlet.http.HttpSession;
 
 public class ServletLogin extends HttpServlet {
-
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -33,28 +32,41 @@ public class ServletLogin extends HttpServlet {
         processRequest(request, response);
     }
 
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        String email = request.getParameter("email");
+        String pswd = request.getParameter("pswd");
         
-        String email= request.getParameter("email");
-        String pswd= request.getParameter("pswd");
-        
-        DaoUsuario daoU;
+          HttpSession session = request.getSession();
+
+          Usuario usr=new Usuario();
+        DaoUsuario dao;
         try {
-            daoU = new DaoUsuario();
-           int rta=daoU.autenticar(email,pswd);
-            System.out.println("dfghjk"+rta);
+            dao = new DaoUsuario();
+           
+            if (email != " " && email != null) {
+                 int rta = dao.autenticar(email, pswd);
+                session.setAttribute("usuarioGuardado", email);
+                usr= dao.objetoUsuarioEmail(email);
+                session.setAttribute("idGuardado", usr.getIdUser());
+                
+                 if (rta==1)  {
+                 
+                 RequestDispatcher rd = request.getRequestDispatcher("Experience.jsp");
+                rd.forward(request, response);
+                 }
+                  if (rta == 2) {
+                RequestDispatcher rd = request.getRequestDispatcher("Table.jsp");
+                rd.forward(request, response);
+            }
+
+            }
+
+               
             
-        if(rta==1){
-            
-     RequestDispatcher rd = request.getRequestDispatcher("Experience.jsp");
-            rd.forward(request, response); 
-        }if(rta==2){
-        RequestDispatcher rd = request.getRequestDispatcher("error.jsp");
-            rd.forward(request, response); 
-        }
+           
         } catch (SQLException ex) {
             Logger.getLogger(ServletLogin.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -64,10 +76,9 @@ public class ServletLogin extends HttpServlet {
         } catch (IllegalAccessException ex) {
             Logger.getLogger(ServletLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
-       
+
     }
 
-   
     @Override
     public String getServletInfo() {
         return "Short description";

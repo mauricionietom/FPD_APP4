@@ -33,7 +33,7 @@ public class DaoExperiencia {
 
         try {
             //!.Establecer la consulta
-            String consulta = "INSERT INTO EXPERIENCIA (nombreExp,curso,asignatura,tema,descripcion,idUser,apoyo) VALUES (?,?,?,?,?,?,?)";
+            String consulta = "INSERT INTO EXPERIENCIA (nombreExp,curso,asignatura,tema,descripcion,idUser,apoyo,estado) VALUES (?,?,?,?,?,?,?,?)";
             //2.Crear el prepareStament
             PreparedStatement statement;
             statement = this.conexion.prepareStatement(consulta);
@@ -47,6 +47,10 @@ public class DaoExperiencia {
             statement.setString(4, esq.getTema());
             statement.setString(5, esq.getDescripcion());
             statement.setInt(6, (d.objetoUsario(esq.getIdUser().getIdUser())).getIdUser());
+            statement.setInt(7, 1);
+            statement.setInt(8, 1);
+           
+          
             //-----------------------------------------------
 
             //3.Hacer la ejecucion
@@ -157,14 +161,28 @@ public class DaoExperiencia {
         return historial;
     }
 
-    public int idgenerado() {
+    public boolean Comprar() throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
+        boolean resultado = false;
 
-        int max = 99999;
-        int min = 00000;
-        Random rand = new Random();
-        int randomNum = rand.nextInt((max - min) + 1) + min;
-        System.out.println(randomNum);
-        return ((int) System.currentTimeMillis()) + randomNum;
+        try {
+            //!.Establecer la consulta
+            String consulta = "UPDATE USUARIO set estado = ?  where idUser=?;";
+            //2.Crear el prepareStament
+            PreparedStatement statement;
+            statement = this.conexion.prepareStatement(consulta);
+
+            DaoUsuario d = new DaoUsuario();
+
+            //-------------------------------------------------
+           
+            //-----------------------------------------------
+
+            //3.Hacer la ejecucion
+            resultado = statement.execute();
+            resultado = true;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return resultado;
     }
-
-}
+            }

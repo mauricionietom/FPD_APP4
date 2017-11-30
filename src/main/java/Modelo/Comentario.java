@@ -13,8 +13,8 @@ public class Comentario {
     
     private int IdCom;
     private String Descripcion; 
-    Usuario idUser=new Usuario();
-    Experiencia idExp = new Experiencia();
+    int idUser;
+    int idExp ;
 
     public int getIdCom() {
         return IdCom;
@@ -32,19 +32,19 @@ public class Comentario {
         this.Descripcion = Descripcion;
     }
 
-    public Usuario getIdUser() {
+    public int getIdUser() {
         return idUser;
     }
 
-    public void setIdUser(Usuario idUser) {
+    public void setIdUser(int idUser) {
         this.idUser = idUser;
     }
 
-    public Experiencia getIdExp() {
+    public int getIdExp() {
         return idExp;
     }
 
-    public void setIdExp(Experiencia idExp) {
+    public void setIdExp(int idExp) {
         this.idExp = idExp;
     }
 
@@ -52,7 +52,7 @@ public class Comentario {
     public String toString() {
         return "Comentario{" + "IdCom=" + IdCom + ", Descripcion=" + Descripcion + ", idUser=" + idUser + ", idExp=" + idExp + '}';
     }
-    
-    
+
+  
 
     }

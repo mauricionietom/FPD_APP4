@@ -18,27 +18,30 @@ asignatura VARCHAR(30),
 tema VARCHAR(30),
 descripcion VARCHAR(100),
 idUser INTEGER,
+apoyo VARCHAR(30),
+estado INTEGER,
 PRIMARY key (idExp),
 FOREIGN key (idUser) REFERENCES Usuario (idUser))
 
 create Table Comentario(
 idCom serial,
 descripcion VARCHAR(50),
-UserLocal INTEGER,
-UserExt INTEGER,
+idExp INTEGER,
+idUser INTEGER,
 PRIMARY key (idCom),
-FOREIGN key (UserLocal) REFERENCES Usuario (idUser),
-FOREIGN key (UserExt) REFERENCES Usuario (idUser))
+FOREIGN key (idExp) REFERENCES Experiencia (idExp),
+FOREIGN key (idUser) REFERENCES Usuario (idUser))
 
 
 
 create Table Calificacion(
 
 idCal serial,
-calificacion INTEGER,
 UserLocal INTEGER,
 UserExt INTEGER,
 PRIMARY key (idCal),
 FOREIGN key (UserLocal) REFERENCES Usuario (idUser),
 FOREIGN key (UserExt) REFERENCES Usuario (idUser))
+
+UPDATE USUARIO set nombre = 'Laura'  where idUser=1;
 

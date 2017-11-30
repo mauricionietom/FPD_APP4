@@ -12,6 +12,12 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="Style/js/jquery-3.2.0.js" type="text/javascript"></script>
+        <script src="Style/js/semantic.js" type="text/javascript"></script>
+        <link rel="stylesheet" href="Style/css/semantic.css">
+         <link rel="stylesheet" href="Style/css/semantic.min.css">
+      
+      
         <title>JSP Page</title>
     </head>
     <body>
@@ -42,12 +48,15 @@
                                     <th width="84" scope="col"><strong><font >Tema</font></strong></th>
                                       <th width="84" scope="col"><strong><font >descripcion</font></strong></th>
                                     <th width="84" scope="col"><strong><font >Nombre Usuario</font></strong></th>
+                                    <th width="84" scope="col"><strong><font >Ver</font></strong></th>
                                 </tr>
                                 <%    if (request.getAttribute("experiencias") != null) {
                                         ArrayList<Experiencia> esqq = (ArrayList<Experiencia>) request.getAttribute("experiencias");
                                       
                                        
-                                        for (Experiencia e : esqq) {;
+                                        for (Experiencia e : esqq) {
+                                            
+                                        
                                 %>
                                 <tr>
                                     <td><%= e.getNombreExp() %></td>
@@ -57,7 +66,16 @@
                                     <td><%= e.getTema() %></td>
                                     <td><%=e.getDescripcion()%></td>
                                     <td><%=e.getIdUser().getNombreUser() %></td>
-                                </tr>
+                                    
+
+                                    <td><a href="Comentarios.jsp?idExp=<%=e.getIdExp()%>">Ver Experiencia </a> </td>
+                                    <td><div class="ui vertical animated button" tabindex="0">
+                                            <div class="hidden content"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">tienda</font></font></div>
+                                            <div class="visible content">
+                                                <i class="shop icon"></i>
+                                            </div>
+                                        </div><td/>
+         </tr>
                                 <%
                                         }
                                     }
