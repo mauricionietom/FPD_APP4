@@ -58,7 +58,7 @@ public class ServletLogin extends HttpServlet {
                 rd.forward(request, response);
                  }
                   if (rta == 2) {
-                RequestDispatcher rd = request.getRequestDispatcher("Table.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("eror.jsp");
                 rd.forward(request, response);
             }
 
