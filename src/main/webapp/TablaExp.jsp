@@ -84,6 +84,6 @@
                                  <input type="submit" VALUE ="HISTORIAL"/><br/>  
                 
          </form>
-        <h1>Hello World!</h1>
+        <h1>Fundacion Pies Descalzos</h1>
     </body>
 </html>
