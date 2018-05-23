@@ -54,11 +54,11 @@ public class ServletLogin extends HttpServlet {
                 
                  if (rta==1)  {
                  
-                 RequestDispatcher rd = request.getRequestDispatcher("Experience.jsp");
+                 RequestDispatcher rd = request.getRequestDispatcher("Servicio.jsp");
                 rd.forward(request, response);
                  }
                   if (rta == 2) {
-                RequestDispatcher rd = request.getRequestDispatcher("eror.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("error.jsp");
                 rd.forward(request, response);
             }
 

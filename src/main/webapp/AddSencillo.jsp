@@ -16,7 +16,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Add Albums or Singles</title>
+        <title>Add Singles</title>
 
         <!-- Bootstrap Core CSS -->
         <link href="Style2/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
