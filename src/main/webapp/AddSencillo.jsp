@@ -221,61 +221,52 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <form  action="ServletExp" method="POST">
-                                            <div class="form-group has-success">
-                                                <label class="control-label" for="nombreExp">Ingrese el nombre el Album</label>
-                                                <input class="form-control" type="text" name="nombreExp" aria-describedby="nameHelp" placeholder="Nombre Experiencia">
-                                            </div>
-
 
                                             <div class="form-group has-success">
                                                 <label class="control-label" for="tema">Ingrese nombre del Artista</label>
                                                 <input class="form-control"type="text" name="tema" aria-describedby="nameHelp" placeholder="Artist name"> 
                                             </div
                                             <div class="form-group has-success">
-                                                <label class="control-label" for="tema">Ingrese el nombre de los sencillos que componen el album</label>
-                                                <input class="form-control"type="text" name="tema" aria-describedby="nameHelp" placeholder="Add song"> 
-                                                <input class="form-control"type="text" name="tema" aria-describedby="nameHelp" placeholder="Add song"> 
-                                                <input class="form-control"type="text" name="tema" aria-describedby="nameHelp" placeholder="Add song"> 
-                                                <input class="form-control"type="text" name="tema" aria-describedby="nameHelp" placeholder="Add song"> 
+                                                <label class="control-label" for="tema">Ingrese el titulo del sencillo</label>
                                                 <input class="form-control"type="text" name="tema" aria-describedby="nameHelp" placeholder="Add song"> 
                                             </div>
 
-                                    <input  name="submit" type="submit" class="btn btn-primary"/>
-                                    </form>
-                                </div>
-                                <!-- /.col-lg-6 (nested) -->
-                                <div class="col-lg-6">
+                                            <input  name="submit" type="submit" class="btn btn-primary"/>
+                                        </form>
+                                    </div>
+                                    <!-- /.col-lg-6 (nested) -->
+                                    <div class="col-lg-6">
 
+                                    </div>
+                                    <!-- /.col-lg-6 (nested) -->
                                 </div>
-                                <!-- /.col-lg-6 (nested) -->
+                                <!-- /.row (nested) -->
                             </div>
-                            <!-- /.row (nested) -->
+                            <!-- /.panel-body -->
                         </div>
-                        <!-- /.panel-body -->
+                        <!-- /.panel -->
                     </div>
-                    <!-- /.panel -->
+                    <!-- /.col-lg-12 -->
                 </div>
-                <!-- /.col-lg-12 -->
+                <!-- /.row -->
             </div>
-            <!-- /.row -->
+            <!-- /#page-wrapper -->
+
         </div>
-        <!-- /#page-wrapper -->
+        <!-- /#wrapper -->
 
-    </div>
-    <!-- /#wrapper -->
+        <!-- jQuery -->
+        <script src="Style2/vendor/jquery/jquery.min.js"></script>
 
-    <!-- jQuery -->
-    <script src="Style2/vendor/jquery/jquery.min.js"></script>
+        <!-- Bootstrap Core JavaScript -->
+        <script src="Style2/vendor/bootstrap/js/bootstrap.min.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="Style2/vendor/bootstrap/js/bootstrap.min.js"></script>
+        <!-- Metis Menu Plugin JavaScript -->
+        <script src="Style2/vendor/metisMenu/metisMenu.min.js"></script>
 
-    <!-- Metis Menu Plugin JavaScript -->
-    <script src="Style2/vendor/metisMenu/metisMenu.min.js"></script>
+        <!-- Custom Theme JavaScript -->
+        <script src="Style2/dist/js/sb-admin-2.js"></script>
 
-    <!-- Custom Theme JavaScript -->
-    <script src="Style2/dist/js/sb-admin-2.js"></script>
-
-</body>
+    </body>
 
 </html>

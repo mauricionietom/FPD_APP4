@@ -3,7 +3,9 @@
     Created on : 31/10/2017, 07:30:44 AM
     Author     : mnieto
 --%>
-
+<%@page import="Dao.DaoUsuario"%>
+<%@page import="Modelo.Experiencia"%>
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,6 +42,17 @@
     </head>
 
     <body>
+          <%
+            ArrayList<Experiencia> col= (ArrayList<Experiencia>) request.getAttribute("experiencias");
+            Integer vtotal = (Integer) request.getAttribute("total");
+            int total = 0;
+            if (vtotal == null) {
+                total = 0;
+            } else {
+                total = vtotal.intValue();
+            }
+
+        %>
 
         <div id="wrapper">
 
@@ -220,62 +233,78 @@
                             <div class="panel-body">
                                 <div class="row">
                                     <div class="col-lg-6">
-                                        <form  action="ServletExp" method="POST">
-                                            <div class="form-group has-success">
-                                                <label class="control-label" for="nombreAlbum">Ingrese el nombre el Album</label>
-                                                <input class="form-control" type="text" name="nombreAlbum" aria-describedby="nameHelp" placeholder="Nombre Experiencia">
-                                            </div>
+                                        <form method="GET" action='ServletExperiencia' name="frr">
+                                            <font color="white"><h2>HISTORIAL</h2></font>
+                                            <br>
 
+                                            <table  width="400" border="2" align="center">
+                                                <caption align="top">
+                                                </caption>
+                                                <tr>
+                                                    <th width="84" scope="col"><strong><font >Nombre Experiencia</font></strong></th>
+                                                    <th width="84" scope="col"><strong><font >Curso</font></strong></th>
+                                                    <th width="84" scope="col"><strong><font >Aignatura</font></strong></th>
+                                                    <th width="84" scope="col"><strong><font >Tema</font></strong></th>
+                                                    <th width="84" scope="col"><strong><font >descripcion</font></strong></th>
+                                                    <th width="84" scope="col"><strong><font >Nombre Usuario</font></strong></th>
+                                                </tr>
+                                                <%    if (request.getAttribute("experiencias") != null) {
+                                                        ArrayList<Experiencia> esqq = (ArrayList<Experiencia>) request.getAttribute("experiencias");
+                                      
+                                       
+                                                        for (Experiencia e : esqq) {;
+                                                %>
+                                                <tr>
+                                                    <td><%= e.getNombreExp() %></td>
+                                                    <td><%= e.getCurso()%></td>
+                                                    <td><%= e.getAsignatura() %></td>
 
-                                            <div class="form-group has-success">
-                                                <label class="control-label" for="tema">Ingrese nombre del Artista</label>
-                                                <input class="form-control"type="text" name="nombreArtista" aria-describedby="nameHelp" placeholder="Artist name"> 
-                                            </div
-                                            <div class="form-group has-success">
-                                                <label class="control-label" for="tema">Ingrese el nombre de los sencillos que componen el album</label>
-                                                <input class="form-control"type="text" name="cancionUno" aria-describedby="nameHelp" placeholder="Add song"> 
-                                                <input class="form-control"type="text" name="cancionDos" aria-describedby="nameHelp" placeholder="Add song"> 
-                                                <input class="form-control"type="text" name="cancionTres" aria-describedby="nameHelp" placeholder="Add song"> 
-                                                <input class="form-control"type="text" name="cancionCuatro" aria-describedby="nameHelp" placeholder="Add song"> 
-                                                <input class="form-control"type="text" name="cancionCinco" aria-describedby="nameHelp" placeholder="Add song"> 
-                                            </div>
+                                                    <td><%= e.getTema() %></td>
+                                                    <td><%=e.getDescripcion()%></td>
+                                                    <td><%=e.getIdUser().getNombreUser() %></td>
+                                                </tr>
+                                                <%
+                                                        }
+                                                    }
+                                                %>
+                                            </table>
+                                            <input type="submit" VALUE ="HISTORIAL"/><br/>  
 
-                                    <input  name="submit" type="submit" class="btn btn-primary"/>
-                                    </form>
+                                        </form>
+                                    </div>
+                                    <!-- /.col-lg-6 (nested) -->
+                                    <div class="col-lg-6">
+
+                                    </div>
+                                    <!-- /.col-lg-6 (nested) -->
                                 </div>
-                                <!-- /.col-lg-6 (nested) -->
-                                <div class="col-lg-6">
-
-                                </div>
-                                <!-- /.col-lg-6 (nested) -->
+                                <!-- /.row (nested) -->
                             </div>
-                            <!-- /.row (nested) -->
+                            <!-- /.panel-body -->
                         </div>
-                        <!-- /.panel-body -->
+                        <!-- /.panel -->
                     </div>
-                    <!-- /.panel -->
+                    <!-- /.col-lg-12 -->
                 </div>
-                <!-- /.col-lg-12 -->
+                <!-- /.row -->
             </div>
-            <!-- /.row -->
+            <!-- /#page-wrapper -->
+
         </div>
-        <!-- /#page-wrapper -->
+        <!-- /#wrapper -->
 
-    </div>
-    <!-- /#wrapper -->
+        <!-- jQuery -->
+        <script src="Style2/vendor/jquery/jquery.min.js"></script>
 
-    <!-- jQuery -->
-    <script src="Style2/vendor/jquery/jquery.min.js"></script>
+        <!-- Bootstrap Core JavaScript -->
+        <script src="Style2/vendor/bootstrap/js/bootstrap.min.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="Style2/vendor/bootstrap/js/bootstrap.min.js"></script>
+        <!-- Metis Menu Plugin JavaScript -->
+        <script src="Style2/vendor/metisMenu/metisMenu.min.js"></script>
 
-    <!-- Metis Menu Plugin JavaScript -->
-    <script src="Style2/vendor/metisMenu/metisMenu.min.js"></script>
+        <!-- Custom Theme JavaScript -->
+        <script src="Style2/dist/js/sb-admin-2.js"></script>
 
-    <!-- Custom Theme JavaScript -->
-    <script src="Style2/dist/js/sb-admin-2.js"></script>
-
-</body>
+    </body>
 
 </html>
